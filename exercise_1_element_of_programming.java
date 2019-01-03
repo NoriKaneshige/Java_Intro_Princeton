@@ -1,12 +1,12 @@
 // 1.1.1 Hello, World
-// public class exercise_1{
+// public class exercise_1_element_of_programming{
 //   public static void main(String[] args){
 //     System.out.println("Hello, World");
 //   }
 // }
 
 // 1.1.2 using a command-line argument
-// public class exercise_1 {
+// public class exercise_1_element_of_programming {
 //
 //     public static void main(String[] args) {
 //         System.out.print("Hi, ");
@@ -21,7 +21,7 @@
 // Hi, Bob. How are you?
 
 
-// public class exercise_1 {
+// public exercise_1_element_of_programming {
 //
 //     public static void main(String[] args) {
 //         System.out.println("**        ***    **********      **             *             **");
@@ -37,7 +37,7 @@
 // }
 
 // 1.2 Built-in types of data
-// public class exercise_1{
+// public class exercise_1_element_of_programming{
 //   public static void main(String[] args){
 //     System.out.println(2 + 3 + "bc");
 //     System.out.println("bc" + 2 + 3);
@@ -48,7 +48,7 @@
 
 
 // 1.2.3Quadratic.java
-// public class exercise_1{
+// public class exercise_1_element_of_programming{
 //
 //     public static void main(String[] args) {
 //         double b = Double.parseDouble(args[0]);
@@ -80,7 +80,7 @@
 
 
 // Distance.java
-// public class exercise_1 {
+// public class exercise_1_element_of_programming {
 //     public static void main(String[] args) {
 //
 //         // parse x- and y-coordinates from command-line arguments
@@ -97,7 +97,7 @@
 
 
 // prints the sum of two random integers between 1 and 6
-// public class exercise_1 {
+// public class exercise_1_element_of_programming {
 //     public static void main(String[] args) {
 //         int SIDES = 6;
 //         int a = 1 + (int) (Math.random() * SIDES);
@@ -108,7 +108,7 @@
 // }
 
 // takes two int values m and d from the command line and prints true if day d of month m is between March 20 (m = 3, d =20) and June 20 (m = 6, d = 20), false otherwise.
-// public class exercise_1 {
+// public class exercise_1_element_of_programming {
 //     public static void main(String[] args) {
 //         int month = Integer.parseInt(args[0]);
 //         int day   = Integer.parseInt(args[1]);
@@ -122,7 +122,7 @@
 // }
 
 // Uniform random numbers
-// public class exercise_1 {
+// public class exercise_1_element_of_programming {
 //     public static void main(String[] args) {
 //         int n = 5;
 //         double x1 = Math.random();
@@ -151,7 +151,7 @@
 // }
 
 // boolean
-// class exercise_1{
+// class exercise_1_element_of_programming{
 //   public static void main(String[] args){
 //     int grade = 95;
 //     boolean isA = (90 <= grade && grade <= 100);
@@ -163,7 +163,7 @@
 // }
 
 // Both divisible by 7?
-// public class exercise_1 {
+// public class exercise_1_element_of_programming {
 //     public static void main(String[] args) {
 //         int x = Integer.parseInt(args[0]);
 //         int y = Integer.parseInt(args[1]);
@@ -175,3 +175,70 @@
 // }
 
 // This is the end of 1.2
+
+// 1.3 Conditionals and Loops
+// public class exercise_1_element_of_programming {
+//     public static void main(String[] args) {
+//         // command-line argument
+//         int n = Integer.parseInt(args[0]);
+//
+//         // compute 1/1 + 1/2 + 1/3 + ... + 1/n
+//         double sum = 0.0;
+//         for (int i = 1; i <= n; i++) {
+//             sum += 1.0 / i;
+//         }
+//         // print the nth harmonic number
+//         System.out.println(sum);
+//     }
+// }
+
+// Gambler's ruin
+// public class exercise_1_element_of_programming {
+//     public static void main(String[] args) {
+//         int stake  = Integer.parseInt(args[0]);    // gambler's stating bankroll
+//         int goal   = Integer.parseInt(args[1]);    // gambler's desired bankroll
+//         int trials = Integer.parseInt(args[2]);    // number of trials to perform
+//         int bets = 0;        // total number of bets made
+//         int wins = 0;        // total number of games won
+//         // repeat trials times
+//         for (int t = 0; t < trials; t++) {
+//             // do one gambler's ruin simulation
+//             int cash = stake;
+//             while (cash > 0 && cash < goal) {
+//                 bets++;
+//                 if (Math.random() < 0.5) cash++;     // win $1
+//                 else                     cash--;     // lose $1
+//             }
+//             if (cash == goal) wins++;                // did gambler go achieve desired goal?
+//         }
+//         // print results
+//         System.out.println(wins + " wins of " + trials);
+//         System.out.println("Percent of games won = " + 100.0 * wins / trials);
+//         System.out.println("Avg # bets           = " + 1.0 * bets / trials);
+//     }
+// }
+
+// 1.4 Arrays
+// Coupon Collector
+public class exercise_1_element_of_programming {
+    public static void main(String[] args) {
+        int n = Integer.parseInt(args[0]);       // number of card types
+        boolean[] isCollected = new boolean[n];  // isCollected[i] = true if card i has been collected
+        int count = 0;                           // total number of cards collected
+        int distinct = 0;                        // number of distinct cards
+        // repeatedly choose a random card and check whether it's a new one
+        while (distinct < n) {
+            int value = (int) (Math.random() * n);   // random card between 0 and n-1
+            count++;                                 // we collected one more card
+            if (!isCollected[value]) {
+                distinct++;
+                isCollected[value] = true;
+            }
+        }
+
+        // print the total number of cards collected
+        System.out.println(count);
+        System.out.println(isCollected);
+        // why "isCollected" doesn't print
+    }
+}

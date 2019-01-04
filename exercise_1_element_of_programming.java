@@ -220,25 +220,175 @@
 
 // 1.4 Arrays
 // Coupon Collector
+// public class exercise_1_element_of_programming {
+//     public static void main(String[] args) {
+//         int n = Integer.parseInt(args[0]);       // number of card types
+//         boolean[] isCollected = new boolean[n];  // isCollected[i] = true if card i has been collected
+//         int count = 0;                           // total number of cards collected
+//         int distinct = 0;                        // number of distinct cards
+//         // repeatedly choose a random card and check whether it's a new one
+//         while (distinct < n) {
+//             int value = (int) (Math.random() * n);   // random card between 0 and n-1
+//             count++;                                 // we collected one more card
+//             if (!isCollected[value]) {
+//                 distinct++;
+//                 isCollected[value] = true;
+//             }
+//         }
+//
+//         // print the total number of cards collected
+//         System.out.println(count);
+//         System.out.println(isCollected);
+//         // why "isCollected" doesn't print
+//     }
+// }
+
+// How many args!!!???
+// public class exercise_1_element_of_programming {
+//     public static void main(String[] args) {
+//         // number of command-line arguments
+//         int n = args.length;
+//         // output message
+//         System.out.print("You entered " + n + " command-line argument");
+//         if (n == 1) System.out.println(".");
+//         else        System.out.println("s.");
+//     }
+// }
+
+
+
+// public class exercise_1_element_of_programming {
+//     public static void main(String[] args) {
+//         // read in frequency of occurrence of n values
+//         int n = args.length;
+//         int[] freq = new int[n];
+//         for (int i = 0; i < n; i++) {
+//             freq[i] = Integer.parseInt(args[i]);
+//         }
+//         // compute total count of all frequencies
+//         int total = 0;
+//         for (int i = 0; i < n; i++) {
+//             total += freq[i];
+//         }
+//         // generate random integer with probability proportional to frequency
+//         int r = (int) (total * Math.random());   // integer in [0, total)
+//         int sum = 0;
+//         int event = -1;
+//         for (int i = 0; i < n && sum <= r; i++) {
+//             sum += freq[i];
+//             event = i;
+//         }
+//         System.out.println(event);
+//         System.out.println(total);
+//         System.out.println(sum);
+//     }
+// }
+
+// Minesweeper game
+// public class exercise_1_element_of_programming {
+//     public static void main(String[] args) {
+//         int m = Integer.parseInt(args[0]);
+//         int n = Integer.parseInt(args[1]);
+//         double p = Double.parseDouble(args[2]);
+//
+//         // game grid is [1..m][1..n], border is used to handle boundary cases
+//         boolean[][] bombs = new boolean[m+2][n+2];
+//         for (int i = 1; i <= m; i++)
+//             for (int j = 1; j <= n; j++)
+//                 bombs[i][j] = (Math.random() < p);
+//
+//         // print game
+//         for (int i = 1; i <= m; i++) {
+//             for (int j = 1; j <= n; j++)
+//                 if (bombs[i][j]) System.out.print("* ");
+//                 else             System.out.print(". ");
+//             System.out.println();
+//         }
+//
+//         // sol[i][j] = # bombs adjacent to cell (i, j)
+//         int[][] sol = new int[m+2][n+2];
+//         for (int i = 1; i <= m; i++)
+//             for (int j = 1; j <= n; j++)
+//                 // (ii, jj) indexes neighboring cells
+//                 for (int ii = i - 1; ii <= i + 1; ii++)
+//                     for (int jj = j - 1; jj <= j + 1; jj++)
+//                         if (bombs[ii][jj]) sol[i][j]++;
+//
+//         // print solution
+//         System.out.println();
+//         for (int i = 1; i <= m; i++) {
+//             for (int j = 1; j <= n; j++) {
+//                 if (bombs[i][j]) System.out.print("* ");
+//                 else             System.out.print(sol[i][j] + " ");
+//             }
+//             System.out.println();
+//         }
+//     }
+// }
+
+// Random walkers
+// import java.util.Arrays;
+// public class exercise_1_element_of_programming {
+//
+//     public static void main(String[] args) {
+//         int n = Integer.parseInt(args[0]);
+//         int[] x = new int[n];         // x positions
+//         int[] y = new int[n];         // y positions
+//         int cellsToVisit = n*n;       // cells left to visit
+//         int steps = 0;                // number of steps taken
+//         double r;
+//         boolean[][] visited = new boolean[n][n];  // has the i-j been visited?
+//         // still true and false are not assigned to "visited"
+//         // start at center
+//         for (int i = 0; i < n; i++) {
+//             x[i] = n/2;
+//             y[i] = n/2;
+//         }
+//         visited[n/2][n/2] = true;
+//         cellsToVisit--;
+//
+//         // repeat until all cells have been visited
+//         while (cellsToVisit > 0) {
+//             steps++;
+//             // move random walker i
+//             for (int i = 0; i < n; i++) {
+//                 r = Math.random();
+//                 if      (r <= 0.25) x[i]++;
+//                 else if (r <= 0.50) x[i]--;
+//                 else if (r <= 0.75) y[i]++;
+//                 else if (r <= 1.00) y[i]--;
+//
+//                 // check if (x[i], y[i]) is inside N-by-N boundary and has been visited
+//                 if (x[i] < n && y[i] < n && x[i] >= 0 && y[i] >= 0 && !visited[x[i]][y[i]]) {
+//                     cellsToVisit--;
+//                     visited[x[i]][y[i]] = true;
+//                 }
+//             }
+//         }
+//         System.out.println(steps);
+//         // System.out.println(Arrays.toString(visited));
+//     }
+// }
+
+// Birthday, I have no idea
 public class exercise_1_element_of_programming {
+
     public static void main(String[] args) {
-        int n = Integer.parseInt(args[0]);       // number of card types
-        boolean[] isCollected = new boolean[n];  // isCollected[i] = true if card i has been collected
-        int count = 0;                           // total number of cards collected
-        int distinct = 0;                        // number of distinct cards
-        // repeatedly choose a random card and check whether it's a new one
-        while (distinct < n) {
-            int value = (int) (Math.random() * n);   // random card between 0 and n-1
-            count++;                                 // we collected one more card
-            if (!isCollected[value]) {
-                distinct++;
-                isCollected[value] = true;
-            }
+        int days = Integer.parseInt(args[0]);     // number of days
+        int people = 0;                           // total number of people
+
+        //  hasBirthday[d] = true if someone born on day d; false otherwise
+        //  auto-initialized to false
+        boolean[] hasBirthday = new boolean[days];
+        // I think first this boolean array is auto-initiated to false
+        while (true) {
+        // this "true" doesn't mean an element of array is true, instead this true just mean that while the program in while loop works, this means true
+            people++;
+            int d = (int) (days * Math.random());    // integer between 0 and days-1
+            if (hasBirthday[d]) break;               // two people with the same birthday, so break out of loop
+            hasBirthday[d] = true;                   // update array
         }
 
-        // print the total number of cards collected
-        System.out.println(count);
-        System.out.println(isCollected);
-        // why "isCollected" doesn't print
+        System.out.println(people);
     }
 }

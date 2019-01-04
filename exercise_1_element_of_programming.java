@@ -371,24 +371,40 @@
 // }
 
 // Birthday, I have no idea
+// public class exercise_1_element_of_programming {
+//
+//     public static void main(String[] args) {
+//         int days = Integer.parseInt(args[0]);     // number of days
+//         int people = 0;                           // total number of people
+//
+//         //  hasBirthday[d] = true if someone born on day d; false otherwise
+//         //  auto-initialized to false
+//         boolean[] hasBirthday = new boolean[days];
+//         // I think first this boolean array is auto-initiated to false
+//         while (true) {
+//         // this "true" doesn't mean an element of array is true, instead this true just mean that while the program in while loop works, this means true
+//             people++;
+//             int d = (int) (days * Math.random());    // integer between 0 and days-1
+//             if (hasBirthday[d]) break;               // two people with the same birthday, so break out of loop
+//             hasBirthday[d] = true;                   // update array
+//         }
+//
+//         System.out.println(people);
+//     }
+// }
+
+
+// 1.5 Input and Output
+// I copied and paste the codes from StdOut.java and StdIn.java from the website to create those files in the same directry.
+// Then, I became able to use StdIn and StdOut.
 public class exercise_1_element_of_programming {
-
     public static void main(String[] args) {
-        int days = Integer.parseInt(args[0]);     // number of days
-        int people = 0;                           // total number of people
-
-        //  hasBirthday[d] = true if someone born on day d; false otherwise
-        //  auto-initialized to false
-        boolean[] hasBirthday = new boolean[days];
-        // I think first this boolean array is auto-initiated to false
-        while (true) {
-        // this "true" doesn't mean an element of array is true, instead this true just mean that while the program in while loop works, this means true
-            people++;
-            int d = (int) (days * Math.random());    // integer between 0 and days-1
-            if (hasBirthday[d]) break;               // two people with the same birthday, so break out of loop
-            hasBirthday[d] = true;                   // update array
+        int n = Integer.parseInt(args[0]);
+        int sum = 0;
+        for (int i = 0; i < n; i++) {
+            int value = StdIn.readInt();
+            sum = sum + value;
         }
-
-        System.out.println(people);
+        StdOut.println("Sum is " + sum);
     }
 }
